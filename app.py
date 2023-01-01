@@ -17,7 +17,7 @@ from wtforms.fields import TextAreaField, SelectField, BooleanField, SubmitField
 from jc import __version__, standard_parser_mod_list, parse, parser_info
 
 
-TITLE = 'jc web'
+TITLE = 'jc REST API'
 DEBUG = False
 
 app = Flask(__name__)
