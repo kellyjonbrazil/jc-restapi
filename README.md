@@ -2,8 +2,9 @@
 
 This project provides a RESTful API server for `jc`.
 
-## Starting the Server
+## Starting the Server (using a Python venv)
 ```
+$ cd jc-restapi
 $ source jc_restapi/bin/activate
 (jc_restapi) $ python -m app
 ```
@@ -12,14 +13,17 @@ $ source jc_restapi/bin/activate
 
 ### List Parsers
 Method: **GET**
+
 URL: `http://<URL>/v1/parsers`
 
 ### Get Parser Info
 Method: **GET**
+
 URL: `http://<URL>/v1/<parser>/info`
 
 ### Parse Data
 Method: **POST**
+
 URL: `http://<URL>/v1/<parser>/parse`
 
 JSON Request:
