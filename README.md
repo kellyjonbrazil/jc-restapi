@@ -2,6 +2,8 @@
 
 This project provides a RESTful API server for `jc`.
 
+See also: [jc-web](https://github.com/kellyjonbrazil/jc-web)
+
 ## Starting the Server (using a Python venv)
 ```
 $ cd jc-restapi
@@ -34,7 +36,7 @@ URL: `http://<URL>/v1/<parser>/parse`
 JSON Request:
 ```
 {
-  "raw": bool,
+  "raw": bool,        # optional (defaults to false)
   "data": string
 }
 ```

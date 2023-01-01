@@ -28,11 +28,14 @@ def parser_documentation(parser_name):
 
 @app.route('/v1/<parser_name>/parse', methods=['POST'])
 def parse_data(parser_name):
-    data = request.get_json()['data']
-    raw = request.get_json()['raw']
-    return {
-        "result": parse(parser_name, data, raw=raw)
-    }
+    request_data = request.get_json()
+    data = request_data.get('data')
+    raw = request_data.get('raw', False)
+
+    if not data:
+        return {"error": "No data in request."}, 400
+
+    return {"result": parse(parser_name, data, raw=raw)}
 
 
 if __name__ == '__main__':
