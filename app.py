@@ -2,11 +2,16 @@ from flask import Flask, request
 from jc import __version__, standard_parser_mod_list, parse, parser_info
 
 
-DEBUG = True
+DEBUG = False
 
 app = Flask(__name__)
 
 # --- ROUTES ---
+@app.route('/v1/version', methods=['GET'])
+def version():
+    return {
+        "version": __version__
+    }
 
 @app.route('/v1/parsers', methods=['GET'])
 def parsers():

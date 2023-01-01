@@ -11,6 +11,11 @@ $ source jc_restapi/bin/activate
 
 ## Client Usage
 
+## Show JC Version
+Method: **GET**
+
+URL: `http://<URL>/v1/version`
+
 ### List Parsers
 Method: **GET**
 
