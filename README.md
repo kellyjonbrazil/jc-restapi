@@ -26,12 +26,12 @@ URL: `http://<URL>/v1/parsers`
 ### Get Parser Info
 Method: **GET**
 
-URL: `http://<URL>/v1/<parser>/info`
+URL: `http://<URL>/v1/info/<parser>`
 
 ### Parse Data
 Method: **POST**
 
-URL: `http://<URL>/v1/<parser>/parse`
+URL: `http://<URL>/v1/parse/<parser>`
 
 JSON Request:
 ```
@@ -42,7 +42,7 @@ JSON Request:
 ```
 For example, to parse `date` output:
 ```
-$ curl -X POST http://<URL>/v1/date/parse \
+$ curl -X POST http://<URL>/v1/parse/date \
    -H 'Content-Type: application/json' \
    -d '{
     "raw": false,
@@ -72,5 +72,7 @@ $ curl -X POST http://<URL>/v1/date/parse \
   }
 }
 ```
+> Ensure you have properly JSON escaped your command output string. This can
+> be done with something like:  `dig | jq -R -s`
 
 `jc` (CLI and Python library) can be found at https://github.com/kellyjonbrazil/jc

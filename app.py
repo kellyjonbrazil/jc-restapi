@@ -27,14 +27,14 @@ def parsers():
         "parsers": standard_parser_mod_list(show_hidden=True)
     }
 
-@app.route('/v1/<parser_name>/info', methods=['GET'])
+@app.route('/v1/info/<parser_name>', methods=['GET'])
 def parser_documentation(parser_name):
     return {
         "parser": parser_name,
         "info": parser_info(parser_name, documentation=True)
     }
 
-@app.route('/v1/<parser_name>/parse', methods=['POST'])
+@app.route('/v1/parse/<parser_name>', methods=['POST'])
 def parse_data(parser_name):
     request_data = request.get_json()
     data = request_data.get('data')
