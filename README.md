@@ -2,6 +2,8 @@
 
 This project provides a RESTful API server for `jc`.
 
+A demo can be found at: https://jc-api.onrender.com
+
 See also: [jc-web](https://github.com/kellyjonbrazil/jc-web)
 
 ## Starting the Server (using a Python venv)
