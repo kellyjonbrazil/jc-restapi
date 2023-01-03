@@ -9,8 +9,14 @@ See also: [jc-web](https://github.com/kellyjonbrazil/jc-web)
 ## Starting the Server (using a Python venv)
 ```
 $ cd jc-restapi
-$ source jc_restapi/bin/activate
-(jc_restapi) $ python -m app
+$ source venv/bin/activate
+(venv) $ python -m app
+```
+or
+```
+$ cd jc-restapi
+$ source venv/bin/activate
+(venv) $ gunicorn app:app
 ```
 
 ## Client Usage
