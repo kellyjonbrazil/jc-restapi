@@ -45,7 +45,7 @@ def parse_data(parser_name):
 
     return {"result": parse(parser_name, data, raw=raw)}
 
-# --- Error handler
+# --- Error handler ---
 @app.errorhandler(HTTPException)
 def handle_exception(e):
     response = e.get_response()
