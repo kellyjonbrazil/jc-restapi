@@ -9,4 +9,5 @@ JC_DOCKER_IMAGE_NAME="$(grep name ./render.yaml | awk '{print $2}')"
 
 docker build \
     --tag "$JC_DOCKER_LOCAL_REPO"/"$JC_DOCKER_IMAGE_NAME":"$JC_DOCKER_IMAGE_VERSION" \
-    --build-arg PYTHON_RUNTIME_VERSION="$(cut -d '-' -f 2 ./runtime.txt)" .
+    --build-arg PYTHON_RUNTIME_VERSION="$(cut -d '-' -f 2 ./runtime.txt)" \
+    --build-arg LABEL_VERSION="$JC_DOCKER_IMAGE_VERSION" .
