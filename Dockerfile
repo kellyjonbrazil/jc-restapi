@@ -6,9 +6,13 @@ FROM ${BASE_DOCKER_IMAGE_NAME}:${PYTHON_RUNTIME_VERSION}-${DISTRO}
 
 ARG APP_PORT=5000
 ARG GUNICORN_PORT=8000
+ARG APP_WORKDIR=/app
 
-LABEL maintainer="don Rumata v0541k@yandex.ru"
-LABEL version="1.0"
+ARG LABEL_MAINTAINER="Kelly Brazil kellyjonbrazil@gmail.com"
+ARG LABEL_VERSION="1.0"
+
+LABEL maintainer=${LABEL_MAINTAINER}
+LABEL version=${LABEL_VERSION}
 LABEL description="Dockerized https://github.com/kellyjonbrazil/jc-restapi"
 
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -18,7 +22,7 @@ ENV GUNICORN_CMD_ARGS "--bind 0.0.0.0:${GUNICORN_PORT}"
 # 4 HEALTHCHECK
 RUN apk --no-cache add curl
 
-WORKDIR /app
+WORKDIR ${APP_WORKDIR}
 COPY . .
 RUN pip install --no-cache --requirement requirements.txt
 
@@ -30,7 +34,7 @@ HEALTHCHECK --interval=5m --timeout=5s \
 # ENTRYPOINT ["python3", "app.py"]
 ENTRYPOINT ["/usr/local/bin/gunicorn", "app:app"]
 
-# url
+# urls
 # https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04
 # https://stackoverflow.com/a/67133443
 # https://docs.gunicorn.org/en/stable/settings.html#settings
