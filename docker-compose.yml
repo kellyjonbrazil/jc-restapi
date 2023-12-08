@@ -1,0 +1,10 @@
+---
+version: '3.7'
+
+services:
+  jc:
+    container_name: jc-restapi
+    image: kellybrazil/jc-restapi
+    ports:
+      - "${GUNICORN_PORT}:${GUNICORN_PORT}"
+    restart: unless-stopped
