@@ -98,7 +98,8 @@ Now you can see the list of images:
 ```bash
 $ docker images
 REPOSITORY               TAG       IMAGE ID       CREATED              SIZE
-kellybrazil/jc-restapi   1.0       5c8c90b5ab98   About a minute ago   68.9MB
+kellybrazil/jc-restapi   1.0       5c8c90b5ab98   About a minute ago   68.7MB
+kellybrazil/jc-restapi   latest    5c8c90b5ab98   About a minute ago   68.7MB
 ```
 
 You can also pull the pre-built container from [Docker Hub](https://hub.docker.com/r/kellybrazil/jc-restapi) with `docker pull kellybrazil/jc-restapi`
