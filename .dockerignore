@@ -1,3 +1,4 @@
 .dockerignore
+.env
 docker-build.sh
 Dockerfile
