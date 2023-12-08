@@ -7,13 +7,13 @@ A demo can be found at: https://jc-api.onrender.com
 See also: [jc-web](https://github.com/kellyjonbrazil/jc-web)
 
 ## Starting the Server (using a Python venv)
-```
+```bash
 $ cd jc-restapi
 $ source .venv/bin/activate
 (.venv) $ python -m app
 ```
 or
-```
+```bash
 $ cd jc-restapi
 $ source .venv/bin/activate
 (.venv) $ gunicorn app:app
@@ -87,15 +87,15 @@ $ curl -X POST http://<URL>/v1/parse/date \
 
 ## Build the Docker Container
 
-```
-$ git clone https://github.com/kellyjonbrazil/jc-restapi`
+```bash
+$ git clone https://github.com/kellyjonbrazil/jc-restapi
 $ cd ./jc-restapi
 $ ./docker-build.sh
 ```
 
 Now you can see the list of images:
 
-```
+```bash
 $ docker images
 REPOSITORY               TAG       IMAGE ID       CREATED              SIZE
 kellybrazil/jc-restapi   1.0       5c8c90b5ab98   About a minute ago   68.9MB
