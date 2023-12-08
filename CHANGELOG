@@ -1,4 +1,7 @@
 jc-restapi changelog
 
+20231207 v0.1.1
+- Add Docker container build (no app changes)
+
 20221231 v0.1.0
 - Initial commit
