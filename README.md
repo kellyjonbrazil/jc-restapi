@@ -85,31 +85,26 @@ $ curl -X POST http://<URL>/v1/parse/date \
 
 `jc` (CLI and Python library) can be found at https://github.com/kellyjonbrazil/jc
 
-## Build Docker image
+## Build the Docker Container
 
-- `git clone https://github.com/kellyjonbrazil/jc-restapi`
-- `cd ./jc-restapi`
-
-### If you want to change the version tag
-
-- Open the `.env` file.
-- Change the `JC_DOCKER_IMAGE_VERSION` variable.
-- Save the file.
-
-### If you just want to build an image
-
-- `sudo ./docker-build.sh`
+```
+$ git clone https://github.com/kellyjonbrazil/jc-restapi`
+$ cd ./jc-restapi
+$ ./docker-build.sh
+```
 
 Now you can see the list of images:
 
-`sudo docker images`
 ```
-REPOSITORY      TAG       IMAGE ID       CREATED              SIZE
-jc/jc-restapi   1.0       5c8c90b5ab98   About a minute ago   68.9MB
+$ docker images
+REPOSITORY               TAG       IMAGE ID       CREATED              SIZE
+kellybrazil/jc-restapi   1.0       5c8c90b5ab98   About a minute ago   68.9MB
 ```
 
-### How to run
+You can also pull the pre-built container from Docker Hub with `docker pull kellybrazil/jc-restapi`
+
+### Run the Container
 
 ```bash
-docker run -d --name jc-restapi -p 8000:8000 jc/jc-restapi:1.0
+$ docker run -d --name jc-restapi -p 8000:8000 kellybrazil/jc-restapi:1.0
 ```

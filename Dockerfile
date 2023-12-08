@@ -1,41 +1,32 @@
 ARG BASE_DOCKER_IMAGE_NAME="python"
-ARG PYTHON_RUNTIME_VERSION="3.9.13"
+ARG PYTHON_RUNTIME_VERSION
 ARG DISTRO="alpine"
-# FROM python:3.9.13-alpine
+
 FROM ${BASE_DOCKER_IMAGE_NAME}:${PYTHON_RUNTIME_VERSION}-${DISTRO}
 
-ARG APP_PORT=5000
-ARG GUNICORN_PORT=8000
-ARG APP_WORKDIR=/app
+ARG JC_MAINTAINER="Kelly Brazil (kellyjonbrazil@gmail.com)"
+ARG JC_DOCKER_IMAGE_VERSION
+ARG JC_LIB_VERSION
+ARG JC_DESCRIPTION="Dockerized https://github.com/kellyjonbrazil/jc-restapi"
 
-ARG LABEL_MAINTAINER="Kelly Brazil kellyjonbrazil@gmail.com"
-ARG LABEL_VERSION="1.0"
+LABEL maintainer="$JC_MAINTAINER"
+LABEL version="$JC_DOCKER_IMAGE_VERSION"
+LABEL jc_library_version="$JC_LIB_VERSION"
+LABEL description="$JC_DESCRIPTION"
 
-LABEL maintainer=${LABEL_MAINTAINER}
-LABEL version=${LABEL_VERSION}
-LABEL description="Dockerized https://github.com/kellyjonbrazil/jc-restapi"
-
+ENV JC_APP_PORT="8000"
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
-ENV GUNICORN_CMD_ARGS "--bind 0.0.0.0:${GUNICORN_PORT}"
+ENV GUNICORN_CMD_ARGS "--bind 0.0.0.0:${JC_APP_PORT}"
 
-# 4 HEALTHCHECK
-RUN apk --no-cache add curl
+EXPOSE ${JC_APP_PORT}
 
-WORKDIR ${APP_WORKDIR}
-COPY . .
-RUN pip install --no-cache --requirement requirements.txt
-
-EXPOSE ${APP_PORT}
+WORKDIR /app
+COPY app.py requirements.txt .
+RUN apk --no-cache add curl && \
+    pip install --no-cache --requirement requirements.txt
 
 HEALTHCHECK --interval=5m --timeout=5s \
-    CMD curl --fail http://127.0.0.1:${APP_PORT}/v1/version || exit 1
+    CMD curl --fail http://127.0.0.1:${JC_APP_PORT}/v1/version || exit 1
 
-# ENTRYPOINT ["python3", "app.py"]
 ENTRYPOINT ["/usr/local/bin/gunicorn", "app:app"]
-
-# urls
-# https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04
-# https://stackoverflow.com/a/67133443
-# https://docs.gunicorn.org/en/stable/settings.html#settings
-# https://testdriven.io/blog/dockerizing-flask-with-postgres-gunicorn-and-nginx/
