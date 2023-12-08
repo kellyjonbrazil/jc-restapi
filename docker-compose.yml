@@ -1,0 +1,11 @@
+---
+version: '3.7'
+
+services:
+  jc:
+    container_name: jc-restapi
+    image: kellybrazil/jc-restapi
+    ports:
+      - "${JC_APP_PORT}:${JC_APP_PORT}"
+    restart: unless-stopped
+
