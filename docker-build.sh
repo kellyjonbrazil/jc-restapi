@@ -7,6 +7,7 @@ JC_LIB_VERSION="1.23.6"
 
 docker build \
     --tag "$JC_DOCKER_REPO"/"$JC_DOCKER_IMAGE_NAME":"$JC_DOCKER_IMAGE_VERSION" \
+    --tag "$JC_DOCKER_REPO"/"$JC_DOCKER_IMAGE_NAME":latest \
     --build-arg PYTHON_RUNTIME_VERSION="$(cut -d '-' -f 2 ./runtime.txt)" \
     --build-arg JC_DOCKER_IMAGE_VERSION="$JC_DOCKER_IMAGE_VERSION" \
     --build-arg JC_LIB_VERSION="$JC_LIB_VERSION" .
