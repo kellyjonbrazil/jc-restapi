@@ -109,3 +109,9 @@ You can also pull the pre-built container from [Docker Hub](https://hub.docker.c
 ```bash
 $ docker run -d --name jc-restapi -p 8000:8000 kellybrazil/jc-restapi:1.0
 ```
+
+or
+
+```bash
+$ JC_APP_PORT=8000 docker-compose up -d
+```
