@@ -2,7 +2,7 @@
 
 This project provides a RESTful API server for `jc`.
 
-A demo can be found at: https://jc-api.onrender.com
+A demo can be found at: https://jc-api.onrender.com/v1/version
 
 See also: [jc-web](https://github.com/kellyjonbrazil/jc-web)
 
